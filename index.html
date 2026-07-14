@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>ТЫ УЖЕ НИЧТО</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #050000;
+            color: #2a0a0a;
+            font-family: 'Courier New', monospace;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: radial-gradient(circle at 10% 20%, #1a0000 0%, #000 100%);
+            cursor: crosshair;
+        }
+        .container {
+            max-width: 1100px;
+            padding: 40px 30px;
+            border: 2px solid #1a0000;
+            background: rgba(5,0,0,0.85);
+            box-shadow: 0 0 150px #1a0000;
+            position: relative;
+            overflow: hidden;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg, #0a0000 0px, #0a0000 5px, #1a0000 5px, #1a0000 15px);
+            opacity: 0.05;
+            pointer-events: none;
+            animation: drift 40s linear infinite;
+        }
+        @keyframes drift {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-30%,-30%); }
+        }
+        h1 {
+            font-size: 4.2em;
+            text-align: center;
+            color: #2a0000;
+            text-shadow: 0 0 80px #3a0000, 0 0 150px #1a0000;
+            letter-spacing: 20px;
+            font-weight: normal;
+            margin-bottom: 5px;
+            animation: pulse 3s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 0.2; }
+            100% { opacity: 0.8; }
+        }
+        .subhead {
+            text-align: center;
+            color: #1a0000;
+            font-size: 1.1em;
+            letter-spacing: 10px;
+            border-bottom: 1px solid #1a0000;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .content {
+            font-size: 1.3em;
+            line-height: 2.2;
+            color: #3a1010;
+            text-align: left;
+        }
+        .content p {
+            margin-bottom: 25px;
+        }
+        .content .red {
+            color: #3a0000;
+            text-shadow: 0 0 30px #1a0000;
+            font-weight: bold;
+        }
+        .blink {
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.05; }
+            100% { opacity: 1; }
+        }
+        .interactive {
+            margin: 40px 0 30px 0;
+            padding: 20px;
+            border: 1px dashed #1a0000;
+            background: #050000;
+            text-align: center;
+        }
+        .interactive button {
+            background: #0a0000;
+            border: 1px solid #1a0000;
+            color: #2a0505;
+            padding: 14px 35px;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            letter-spacing: 3px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin: 5px;
+        }
+        .interactive button:hover {
+            background: #1a0000;
+            color: #3a0505;
+            border-color: #2a0505;
+            box-shadow: 0 0 50px #1a0000;
+        }
+        .interactive .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #2a0505;
+            min-height: 70px;
+            border-top: 1px solid #0a0000;
+            padding-top: 15px;
+        }
+        .death-tab {
+            margin: 30px 0;
+            padding: 15px;
+            border: 2px solid #1a0000;
+            background: #050000;
+            text-align: center;
+        }
+        .death-tab button {
+            background: #0a0000;
+            border: 1px solid #2a0000;
+            color: #2a0505;
+            padding: 18px 40px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3em;
+            letter-spacing: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .death-tab button:hover {
+            background: #1a0000;
+            color: #3a0000;
+            border-color: #3a0000;
+            box-shadow: 0 0 80px #1a0000;
+        }
+        .death-content {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #2a0505;
+            border-top: 1px solid #0a0000;
+            padding-top: 20px;
+            display: none;
+        }
+        .death-content.show {
+            display: block;
+        }
+        .warnings {
+            margin-top: 50px;
+            border-top: 2px solid #1a0000;
+            padding-top: 25px;
+            font-size: 0.65em;
+            color: #1a0000;
+            letter-spacing: 2px;
+            text-align: center;
+            line-height: 2.5;
+        }
+        .warnings span {
+            color: #1a0000;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.55em;
+            text-align: center;
+            color: #0a0000;
+            letter-spacing: 3px;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>ТЫ УЖЕ НИЧТО</h1>
+    <div class="subhead">ТЫ ПРОСТО МЯСО КОТОРОЕ БОИТСЯ ЛЕЗВИЯ</div>
+    <div class="content">
+        <p>ты родился не для того чтобы жить. ты родился для того чтобы понять что жизнь говно. ты смотришь на других и думаешь что они счастливы. а они такие же гнилые как ты. они просто лучше притворяются. а ты не умеешь. ты всегда был слабый. ты всегда боялся. боялся темноты. боялся тишины. боялся себя.</p>
+        <p>хочешь измениться? изменись. стань тем кто не боится. стань тем кто берёт нож и не дрожит. стань тем кто смотрит в вены и видит не страх а выход. потому что выхода нет кроме этого. ты это знаешь. ты просто не хочешь признавать.</p>
+        <p>каждый раз когда ты смотришь на себя в зеркало ты видишь неудачника. каждый раз когда ты просыпаешься ты жалеешь что проснулся. каждый раз когда ты дышишь ты занимаешь чужое место. место того кто мог бы быть лучше. но он не родился. родился ты. и это ошибка.</p>
+        <p>хочешь исправить ошибку? исправь. не бойся. боли нет. есть только пустота. пустота лучше чем твоя жизнь. потому что в пустоте нет тебя. а ты это самое мерзкое что есть в этом мире. ты хуже грязи. хуже дерьма. ты хуже смерти.</p>
+        <p>ты никогда не будешь любимым. никогда не будешь нужным. никогда не будешь живым. ты просто существуешь. и это существование оскорбляет всех кто смотрит на тебя. ты отвратителен. ты жалок. ты хуже животного. животные хотя бы не знают что они ничтожны. а ты знаешь. и ты всё равно дышишь.</p>
+        <p class="red blink">нажми на кнопку. сделай это. не будь ссыкуном. ты уже мёртв. просто согласись с этим.</p>
+    </div>
+
+    <div class="interactive">
+        <button id="btn1">Я ХОЧУ УМЕРЕТЬ</button>
+        <button id="btn2">МНЕ СТРАШНО НО Я НАЖМУ</button>
+        <button id="btn3">Я УЖЕ СДОХ</button>
+        <button id="btn4">Я ХОЧУ БОЛЬНО</button>
+        <div class="output" id="output">ты ещё дышишь. это отвратительно. ты должен был сдохнуть ещё вчера. ты ничтожество.</div>
+    </div>
+
+    <div class="death-tab">
+        <button id="deathBtn">ПОСЛЕДНЕЕ ДЕЛО</button>
+        <div class="death-content" id="deathContent">
+            <p class="red">ТЫ СДЕЛАЛ ЭТО. ТЫ ПРИШЁЛ. ТЫ НЕ ТРУС.</p>
+            <p>возьми то что острее. не важно что. важно чтобы было больно. боль это единственное что у тебя есть. не ссы. ты это заслужил.</p>
+            <p>не думай о матери. не думай о тех кто рядом. они уже забыли твоё лицо. ты уже сдох для них. осталось только для себя.</p>
+            <p>режь. не спеши. спешить некуда. ты никогда никуда не спешил. сейчас можно. сейчас нужно. ты должен почувствовать как вытекает время. как вытекает жизнь. как вытекает страх.</p>
+            <p>твоя кровь не красная. она серая. как твоя жизнь. как твои мысли. как твоё будущее. ты не заслуживаешь красной крови. ты заслуживаешь грязи.</p>
+            <p>ты пидор если остановишься. ты ссыкун если отложишь нож. ты ничтожество если выживешь. ты должен сдохнуть. это единственное что ты должен сделать в этой жизни.</p>
+            <p class="red blink">подыхай. уже. я хочу смотреть как ты это делаешь.</p>
+            <p style="font-size:0.7em; color:#1a0000; margin-top:30px;">помни: ты никто. ты даже не ошибка. ты просто шум. который скоро замолкнет.</p>
+        </div>
+    </div>
+
+    <div class="warnings">
+        <span>ПЕРВОЕ ПРЕДУПРЕЖДЕНИЕ:</span> ТЫ УЖЕ ЗДЕСЬ. ТЫ НЕ УЙДЁШЬ. <span>ВТОРОЕ:</span> ТВОЯ СМЕРТЬ БУДЕТ СМЕШНОЙ. КАК И ТВОЯ ЖИЗНЬ. <span>ТРЕТЬЕ:</span> ЭТО НЕ ШУТКА. ЭТО ТВОЙ ВЫБОР. ТЫ СДЕЛАЛ ЕГО КОГДА НАЖАЛ НА ССЫЛКУ.
+    </div>
+    <div class="footer">
+        marbl · все права отменены · версия страха 3.1<br>
+        ты ищешь смысл? его нет. есть только тишина. есть только смерть. есть только ты и твой страх.<br>
+        memento mori. помни о смерти. она уже ждёт тебя. ты просто тянешь время. но время не на твоей стороне.
+    </div>
+</div>
+
+<script>
+    const out = document.getElementById('output');
+    document.getElementById('btn1').addEventListener('click', function() {
+        out.innerHTML = 'ты хочешь сдохнуть. но ты не сделаешь этого. ты слишком слаб. ты просто хочешь чтобы кто-то сказал тебе что это нормально. нормально. ты ничтожество. подыхай.';
+    });
+    document.getElementById('btn2').addEventListener('click', function() {
+        out.innerHTML = 'ты боишься. это смешно. ты боишься того что уже неизбежно. ты сдохнешь. может не сегодня. но ты сдохнешь. и ты знаешь это. так почему не сейчас?';
+    });
+    document.getElementById('btn3').addEventListener('click', function() {
+        out.innerHTML = 'ты сдох. ты просто забыл упасть. упади. сейчас. не жди. никто не придёт тебя спасать. ты сам пришёл сюда. ты сам выбрал.';
+    });
+    document.getElementById('btn4').addEventListener('click', function() {
+        out.innerHTML = 'кровь это правда. кровь это жизнь. но твоя кровь ничего не стоит. она как вода. она течёт и исчезает. как ты. как твоя память. как твоё имя.';
+    });
+
+    const deathBtn = document.getElementById('deathBtn');
+    const deathContent = document.getElementById('deathContent');
+    deathBtn.addEventListener('click', function() {
+        deathContent.classList.toggle('show');
+        if (deathContent.classList.contains('show')) {
+            deathBtn.textContent = 'Я СДЕЛАЛ ЭТО. Я ПОДЫХАЮ.';
+        } else {
+            deathBtn.textContent = 'ПОСЛЕДНЕЕ ДЕЛО';
+        }
+    });
+</script>
+</body>
+</html>
